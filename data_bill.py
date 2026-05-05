@@ -36,6 +36,7 @@ total_bill = monthly_cost + overage_cost
 
 # Output:
 
-print(f"GB over the limit: {overage_gb:.2f}")
-print(f"Overage cost: ${overage_cost:.2f}")
-print(f"Total bill: ${total_bill:.2f}")
+print(f"You are {overage_gb} GB over your limit.")
+print(f"Overage rate: ${overage_rate} per GB")
+print(f"Overage cost: ${overage_cost}")
+print(f"Total bill: ${total_bill}")
