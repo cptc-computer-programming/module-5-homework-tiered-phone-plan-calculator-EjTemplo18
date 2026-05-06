@@ -1,4 +1,5 @@
 # constant values are set here:
+
 TIER_1_DATA_LIMIT_GB = 10
 TIER_2_DATA_LIMIT_GB = 20
 PREMIUM_USER_OVERAGE_RATE_TIER_2 = 1
@@ -24,12 +25,18 @@ else:
 
 if overage_gb == 0:
     overage_rate = 0
-
 elif data_used <= TIER_2_DATA_LIMIT_GB:
-    overage_rate = PREMIUM_USER_OVERAGE_RATE_TIER_2 if is_premium else REGULAR_USER_OVERAGE_RATE_TIER_2
-
+    if is_premium:
+        overage_rate = PREMIUM_USER_OVERAGE_RATE_TIER_2
+    else:
+        overage_rate = REGULAR_USER_OVERAGE_RATE_TIER_2
 else:
-    overage_rate = PREMIUM_USER_OVERAGE_RATE_TIER_3 if is_premium else REGULAR_USER_OVERAGE_RATE_TIER_3
+    if is_premium:
+        overage_rate = PREMIUM_USER_OVERAGE_RATE_TIER_3
+    else:
+        overage_rate = REGULAR_USER_OVERAGE_RATE_TIER_3
+
+# Cost Calculations:
 
 overage_cost = overage_gb * overage_rate
 total_bill = monthly_cost + overage_cost
